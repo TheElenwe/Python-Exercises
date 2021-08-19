@@ -1,25 +1,21 @@
-# Set initial state variables
-portion_down_payment = 0.25   # Percent of home value for down payment
-r = 0.04   # Rate of investment return
-
-# Input salary, portion saved, and total cost of home
-annual_salary = float(input('Please enter the annual salary of the job: '))
-portion_saved = float(input('Enter the amount to be saved each month as ratio (example: 0.1 for 10%)'))
-total_cost = float(input('How much is the home: '))
-
-# Monthly salary and down payment
-monthly_salary = annual_salary/12
-monthly_return = r/12
-down_payment = portion_down_payment*total_cost
-
-# Months and current savings
-months = 0
+annual_salary = int(input("Salary: "))
+portion_saved = float(input("Percentage to save: ")) 
+total_cost = int(input("Cost of the house: "))
+portion_down_payment = total_cost * 0.25
 current_savings = 0
+rate = 0.04
+number_of_months = 0
 
-while current_savings <= down_payment:
-    
-    # Increase current savings using savings and return on investment
-    current_savings += portion_saved*monthly_salary + current_savings*monthly_return
-    months += 1
 
-print('Number of months: ',months)
+while current_savings <= portion_down_payment:
+    current_savings += annual_salary * portion_saved / 12
+    current_savings += current_savings * rate / 12
+    number_of_months += 1
+
+    print(number_of_months, current_savings)
+
+print("Enter your annual salary: ", annual_salary)  
+print("Enter the percent of your salary to save, as a decimal: ", portion_saved)
+print("Enter the cost of your dream home: ", total_cost) 
+print("Number of months: ", number_of_months) 
+
